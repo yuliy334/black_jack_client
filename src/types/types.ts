@@ -9,10 +9,10 @@ enum CardValue {
     eight,
     nine,
     ten,
-    jack,
-    quin,
-    king,
-    ace
+    jack="jack",
+    quin="quin",
+    king="king",
+    ace="ace"
 }
 
 enum Suit {
@@ -21,6 +21,7 @@ enum Suit {
     '♦',
     '♣'
 }
+
 
 interface Сard {
     rank: CardValue,

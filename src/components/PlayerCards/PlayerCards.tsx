@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
-import type { GameState, Suit } from '../types/types';
-import Card from './Card';
+import type { GameState, Suit } from '../../types/types';
+import Card from '../Card/Card';
 
 
 interface DillerCardsProps {
@@ -14,8 +14,9 @@ function PlayerCards(props: DillerCardsProps) {
     return (
         <>
             <h1>Player Cards:</h1>
-            <Card rank={String(gameState?.playerCards[0].rank)} suit={String(gameState?.playerCards[0].suit)}></Card>
-            <Card rank={String(gameState?.playerCards[1].rank)} suit={String(gameState?.playerCards[1].suit)}></Card>
+            {gameState?.playerCards.map((item, index) => (
+                <Card key={index} rank={String(item.rank)} suit={String(item.suit)} />
+            ))}
             <h2>points:{gameState?.playerPoints.value}</h2>
         </>
     )

@@ -1,8 +1,11 @@
 import { useEffect, useState } from 'react'
 import './App.css'
-import DillerСards from './components/DillerCards'
-import PlayerCards from './components/PlayerCards'
+import DillerСards from './components/DillerCards/DillerCards'
+import PlayerCards from './components/PlayerCards/PlayerCards'
 import type { GameState } from './types/types';
+import { hit as ApiHit, stand as ApiStand, StartGame as ApiStartGame } from './api/blackJackApi';
+import Card from './components/Card/Card';
+import GameTable from './components/GameTable/GameTable';
 
 
 
@@ -12,51 +15,45 @@ import type { GameState } from './types/types';
 
 function App() {
   const [gameState, setGameState] = useState<GameState | null>(null);
+  const [isGame, setIsGame] = useState(false);
+  const [endGame, setEndGame] = useState(false);
 
   function StartGame() {
-
-    fetch("http://localhost:9000/games")
-      .then(response => response.json())
-      .then(json => {
-        setGameState(json);
-      })
-      .catch(error => {
-        console.error(error);
-      });
+    ApiStartGame().then(state => {
+      setEndGame(false);
+      setGameState(state);
+      setIsGame(true);
+    })
   }
 
   function hit() {
 
-    fetch("http://localhost:9000/games/hit")
-      .then(response => response.json())
-      .then(json => {
-        setGameState(json);
-      })
-      .catch(error => {
-        console.error(error);
-      });
+    ApiHit().then(state => {
+      setGameState(state);
+    })
   }
   function stand() {
 
-    fetch("http://localhost:9000/games/stand")
-      .then(response => response.json())
-      .then(json => {
-        setGameState(json);
-      })
-      .catch(error => {
-        console.error(error);
-      });
+    ApiStand().then(state => {
+      setGameState(state);
+      setEndGame(true);
+
+    })
+
   }
 
   return (
-    <>
-      <DillerСards gameState={gameState}></DillerСards>
-      <PlayerCards gameState={gameState}></PlayerCards>
-      <h2>Game result: {gameState?.gameResult}</h2>
+    <div className='App'>
+
+      {isGame&&<DillerСards gameState={gameState}></DillerСards>}
+      {isGame&&<PlayerCards gameState={gameState}></PlayerCards>}
+
+      {isGame&&<h2>Game result: {gameState?.gameResult}</h2>}
       <button onClick={StartGame}>StartGame</button>
-      <button onClick={hit}>Hit</button>
-      <button onClick={stand}>Stand</button>
-    </>
+      {!endGame&&isGame&&<button onClick={hit}>Hit</button>}
+      {!endGame&&isGame&&<button onClick={stand}>Stand</button>}
+
+    </div>
 
   )
 }
