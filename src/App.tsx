@@ -37,6 +37,7 @@ function App() {
     ApiStand().then(state => {
       setGameState(state);
       setEndGame(true);
+      setIsGame(false);
 
     })
 
@@ -44,14 +45,16 @@ function App() {
 
   return (
     <div className='App'>
+      <div className='Game'>
+        <GameTable gameState={gameState}></GameTable>
+      </div>
+      <div className='buttons'>
+        {!isGame && <button className = "start_button" onClick={StartGame}>StartGame</button>}
+        {isGame && <button className = "start_button" onClick={hit}>Hit</button>}
+        {isGame && <button className = "start_button" onClick={stand}>Stand</button>}
+      </div>
 
-      {isGame&&<DillerСards gameState={gameState}></DillerСards>}
-      {isGame&&<PlayerCards gameState={gameState}></PlayerCards>}
 
-      {isGame&&<h2>Game result: {gameState?.gameResult}</h2>}
-      <button onClick={StartGame}>StartGame</button>
-      {!endGame&&isGame&&<button onClick={hit}>Hit</button>}
-      {!endGame&&isGame&&<button onClick={stand}>Stand</button>}
 
     </div>
 

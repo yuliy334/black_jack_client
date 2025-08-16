@@ -1,5 +1,7 @@
-:root {
-  color: rgba(255, 255, 255, 0.87);
-  background-image: url(assets/background.jpg);
+html, body {
+  height: 100vh;
+  margin: 0;
+  background: url(assets/background_3_2.jpg)no-repeat center center fixed;
   background-size: cover;
+  overflow: hidden;
 }

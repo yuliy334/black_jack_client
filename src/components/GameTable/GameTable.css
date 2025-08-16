@@ -1,5 +1,7 @@
-.GameTable{
+.game-table {
     width: 50%;
-    height: 50%;
-    background-color: blue; 
+    height: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between
 }

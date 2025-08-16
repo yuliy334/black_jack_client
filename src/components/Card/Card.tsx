@@ -1,19 +1,15 @@
 import React from "react"
-
+import "./Card.css"
 interface CardProps {
-  suit: string;
-  rank: string;
+    suit: string;
+    rank: string;
 }
 
 function Card(props: CardProps) {
 
-    
+    const imageUrl = new URL(`../../assets/cards/${props.suit}/${props.rank}.png`, import.meta.url).href;
     return (
-        <>
-            <h3>Card:</h3>
-            <div>rank: {props.rank}</div>
-            <div>suit: {props.suit}</div>
-        </>
+        <img className="Card" src={imageUrl} alt="dfsadf"/>
     )
 }
 

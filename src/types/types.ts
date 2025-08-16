@@ -10,7 +10,7 @@ enum CardValue {
     nine,
     ten,
     jack="jack",
-    quin="quin",
+    quin="queen",
     king="king",
     ace="ace"
 }
