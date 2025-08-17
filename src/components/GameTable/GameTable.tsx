@@ -14,7 +14,7 @@ function GameTable(props: GameStateProps) {
     return (
         <div className='game-table'>
             <DillerСards gameState={props.gameState}></DillerСards>
-            <Deck></Deck>
+            <Deck gameState={props.gameState}></Deck>
             <PlayerCards gameState={props.gameState}></PlayerCards>
         </div>
     )
