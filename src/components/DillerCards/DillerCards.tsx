@@ -10,12 +10,14 @@ interface DillerCardsProps {
 function DillerСards(props: DillerCardsProps) {
     const gameState = props.gameState;
 
+    
+
+
     return (
         <div className='diller-cards'>
             {gameState?.dilerCards.map((item, index) => (
                 <Card key={index} rank={String(item.rank)} suit={String(item.suit)} />
             ))}
-            {/* <h2>points:{gameState?.dilerPoints.value}</h2> */}
         </div>
     )
 }

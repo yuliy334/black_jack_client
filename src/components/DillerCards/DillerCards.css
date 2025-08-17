@@ -1,5 +1,7 @@
 .diller-cards {
     display: flex;
     justify-content: center;
-    gap: 20px;
+    background-color: black;
+    height: 30%;
+    align-items: center;
 }

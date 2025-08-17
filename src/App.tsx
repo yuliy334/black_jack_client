@@ -6,6 +6,7 @@ import type { GameState } from './types/types';
 import { hit as ApiHit, stand as ApiStand, StartGame as ApiStartGame } from './api/blackJackApi';
 import Card from './components/Card/Card';
 import GameTable from './components/GameTable/GameTable';
+import Deck from './components/Deck/Deck';
 
 
 
@@ -18,8 +19,17 @@ function App() {
   const [isGame, setIsGame] = useState(false);
   const [endGame, setEndGame] = useState(false);
 
+
+  useEffect(() => {
+    if (gameState?.gameResult !== "") {
+      console.log("Игра закончена:", gameState);
+      setIsGame(false);
+    }
+  }, [gameState]);
+
   function StartGame() {
     ApiStartGame().then(state => {
+
       setEndGame(false);
       setGameState(state);
       setIsGame(true);
@@ -45,13 +55,11 @@ function App() {
 
   return (
     <div className='App'>
-      <div className='Game'>
-        <GameTable gameState={gameState}></GameTable>
-      </div>
+      <GameTable gameState={gameState}></GameTable>
       <div className='buttons'>
-        {!isGame && <button className = "start_button" onClick={StartGame}>StartGame</button>}
-        {isGame && <button className = "start_button" onClick={hit}>Hit</button>}
-        {isGame && <button className = "start_button" onClick={stand}>Stand</button>}
+        {!isGame && <button className="start_button" onClick={StartGame}>StartGame</button>}
+        {isGame && <button className="start_button" onClick={hit}>Hit</button>}
+        {isGame && <button className="start_button" onClick={stand}>Stand</button>}
       </div>
 
 

@@ -1,7 +1,19 @@
-.Card{
+.Card {
     background-color: white;
     border: 1px solid black;
     border-radius: 5px;
-    width:50px;
-    height: auto
+    width: auto;
+    height: 70%;
+    margin-left: -30px;
+}
+.Deck>.Card {
+    margin-left: 0px;;
+}
+.Card:first-child {
+    margin-left: 0;
+}
+@media (max-width: 768px) {
+  .Card {
+    margin-left: -90px;
+  }
 }
