@@ -9,6 +9,7 @@ import GameTable from './components/GameTable/GameTable';
 import Deck from './components/Deck/Deck';
 import { GameStateContext, GameStateProvider } from './contexts/gameStateContext';
 import GameButtons from './components/GameButtons/GameButtons';
+import EndGame from './components/EndGame/EndGame';
 
 
 
@@ -23,7 +24,7 @@ function App() {
     <GameStateProvider>
       <div className='App'>
         <GameTable></GameTable>
-
+        <EndGame></EndGame>
         <GameButtons></GameButtons>
 
 

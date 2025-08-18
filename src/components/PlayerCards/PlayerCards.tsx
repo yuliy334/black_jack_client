@@ -5,21 +5,21 @@ import "./PlayerCards.css"
 import { useGameState } from '../../contexts/gameStateContext';
 
 
-interface DillerCardsProps {
-    gameState: GameState | null;
-}
+function PlayerCards() {
+    const { gameState } = useGameState();
 
-function PlayerCards(props: DillerCardsProps) {
-   const { gameState } = useGameState();
-
+    
 
     return (
-        <div className='player-cards'>
-            {gameState?.playerCards.map((item, index) => (
-                <Card key={index} rank={String(item.rank)} suit={String(item.suit)} />
-            ))}
-            {/* <h2>points:{gameState?.playerPoints.value}</h2> */}
-        </div>
+        <>
+            <div className='player-cards'>
+                {gameState?.playerCards.map((item, index) => (
+                    
+                    <Card key={index} rank={String(item.rank)} suit={String(item.suit)} inversed = {false}/>
+                ))}
+            </div>
+            <div className='player-points'>{gameState?.playerPoints.value}</div>
+        </>
     )
 }
 

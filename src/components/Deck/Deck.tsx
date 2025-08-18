@@ -18,7 +18,7 @@ function Deck(props: DeckCardsProps) {
     return (
         <div className="Deck">
             <div className="num_of_cards">{numCard}</div>
-            <Card suit="0" rank="0"></Card>
+            <Card suit="0" rank="0" inversed={true}></Card>
         </div>
 
     )

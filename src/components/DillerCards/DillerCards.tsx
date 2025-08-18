@@ -4,12 +4,8 @@ import Card from '../Card/Card';
 import "./DillerCards.css"
 import { useGameState } from '../../contexts/gameStateContext';
 
-interface DillerCardsProps {
-    gameState: GameState | null;
-}
-
-function DillerСards(props: DillerCardsProps) {
-    const { gameState } = useGameState();
+function DillerСards() {
+    const { gameState, isGameOver } = useGameState();
 
     
 
@@ -17,7 +13,7 @@ function DillerСards(props: DillerCardsProps) {
     return (
         <div className='diller-cards'>
             {gameState?.dilerCards.map((item, index) => (
-                <Card key={index} rank={String(item.rank)} suit={String(item.suit)} />
+                <Card key={index} rank={String(item.rank)} suit={String(item.suit)} inversed={(index !== gameState.dilerCards.length-1)&&!isGameOver} />
             ))}
         </div>
     )

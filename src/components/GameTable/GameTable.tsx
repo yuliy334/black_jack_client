@@ -12,9 +12,9 @@ function GameTable() {
     const { gameState } = useGameState();
     return (
         <div className='game-table'>
-            <DillerСards gameState={gameState}></DillerСards>
+            <DillerСards></DillerСards>
             <Deck gameState={gameState}></Deck>
-            <PlayerCards gameState={gameState}></PlayerCards>
+            <PlayerCards></PlayerCards>
         </div>
     )
 }
