@@ -5,6 +5,7 @@ type CardProps = {
     rank: string;
     suit: string;
     inversed:boolean;
+    className?:string;
 };
 
 
@@ -17,7 +18,7 @@ function Card(props: CardProps) {
     const CardClasses = `Card ${props.rank === "0" || props.inversed ? "inversed" : ""}`;
 
     return (
-        <div className="Card" style={{backgroundImage:`url(${imageUrl})`}}/>
+        <div className={`Card ${props.className ?? ""}`} style={{backgroundImage:`url(${imageUrl})`}}/>
     )
 }
 
