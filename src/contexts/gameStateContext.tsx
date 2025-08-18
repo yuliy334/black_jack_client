@@ -6,6 +6,7 @@ interface GameStateContextType {
     startGame: () => Promise<void>;
     hit: () => Promise<void>;
     stand: () => Promise<void>;
+    double: () => Promise<void>;
     isGameOver: boolean;
     setIsGameOver: React.Dispatch<React.SetStateAction<boolean>>;
 }
@@ -26,7 +27,7 @@ export function GameStateProvider({ children }: { children: React.ReactNode }) {
             localStorage.removeItem("gameState");
         }
 
-        if(gameState?.gameResult!=""){
+        if (gameState?.gameResult != "") {
             setIsGameOver(true);
         }
     }, [gameState]);
@@ -62,9 +63,17 @@ export function GameStateProvider({ children }: { children: React.ReactNode }) {
             setGameState(null);
         }
     }
+    async function double() {
+        try {
+            await hit();
+            await stand();
+        } catch {
+            setGameState(null);
+        }
+    }
 
     return (
-        <GameStateContext.Provider value={{ gameState, startGame, hit, stand, isGameOver,setIsGameOver }}>
+        <GameStateContext.Provider value={{ gameState, startGame, hit, stand, double, isGameOver, setIsGameOver }}>
             {children}
         </GameStateContext.Provider>
     );

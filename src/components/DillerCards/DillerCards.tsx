@@ -3,6 +3,7 @@ import type { GameState, Suit } from '../../types/types';
 import Card from '../Card/Card';
 import "./DillerCards.css"
 import { useGameState } from '../../contexts/gameStateContext';
+import dillerPoints from './DillerCardsPoints';
 
 function DillerСards() {
     const { gameState, isGameOver } = useGameState();
@@ -15,7 +16,7 @@ function DillerСards() {
         gameState.dilerCards.forEach((_, index) => {
             setTimeout(() => {
                 setVisibleCards(prev => [...prev, index]);
-            }, index * 200 +100);
+            }, index * 200 + 100);
         });
 
     }, [gameState?.dilerCards]);
@@ -34,11 +35,14 @@ function DillerСards() {
 
 
     return (
-        <div className='diller-cards'>
-            {gameState?.dilerCards.map((item, index) => (
-                <Card key={index} rank={String(item.rank)} suit={String(item.suit)} inversed={(index !== gameState.dilerCards.length - 1) && !isGameOver} className={visibleCards.includes(index) ? "card-animate" : "card-hidden-diller"} />
-            ))}
-        </div>
+        <>
+            <div className='diller-points'>{!isGameOver? dillerPoints(gameState?.dilerCards.at(1)?.rank.toString()) :gameState?.dilerPoints.value}</div>
+            <div className='diller-cards'>
+                {gameState?.dilerCards.map((item, index) => (
+                    <Card key={index} rank={String(item.rank)} suit={String(item.suit)} inversed={(index !== gameState.dilerCards.length - 1) && !isGameOver} className={visibleCards.includes(index) ? "card-animate" : "card-hidden-diller"} />
+                ))}
+            </div>
+        </>
     )
 }
 

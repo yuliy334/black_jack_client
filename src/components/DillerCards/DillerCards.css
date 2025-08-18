@@ -4,3 +4,16 @@
     height: 30%;
     align-items: center;
 }
+
+.diller-points {
+    color: rgb(254, 254, 254);
+    background-color: rgb(0, 0, 0);
+    font-size: 1rem;
+    width: 2%;
+    padding: 10px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+}
