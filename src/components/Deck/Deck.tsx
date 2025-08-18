@@ -9,7 +9,7 @@ interface DeckCardsProps {
 }
 
 function Deck(props: DeckCardsProps) {
-    const [numCard, setNumCard] = useState(0)
+    const [numCard, setNumCard] = useState(0);
     useEffect(() => {
         setNumCard(
             54 - (props.gameState?.playerCards.length ?? 0) - (props.gameState?.dilerCards.length ?? 0)

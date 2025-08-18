@@ -5,17 +5,16 @@ import DillerСards from '../DillerCards/DillerCards';
 import type { GameState, Suit } from '../../types/types';
 import PlayerCards from '../PlayerCards/PlayerCards';
 import Deck from '../Deck/Deck';
+import { useGameState } from '../../contexts/gameStateContext';
 
-interface GameStateProps {
-    gameState: GameState | null;
-}
 
-function GameTable(props: GameStateProps) {
+function GameTable() {
+    const { gameState } = useGameState();
     return (
         <div className='game-table'>
-            <DillerСards gameState={props.gameState}></DillerСards>
-            <Deck gameState={props.gameState}></Deck>
-            <PlayerCards gameState={props.gameState}></PlayerCards>
+            <DillerСards gameState={gameState}></DillerСards>
+            <Deck gameState={gameState}></Deck>
+            <PlayerCards gameState={gameState}></PlayerCards>
         </div>
     )
 }

@@ -10,9 +10,9 @@
 .num_of_cards {
     color: rgb(255, 255, 255);
     background-color: rgb(0, 0, 0);
-    border-radius: 50%;
+    border-radius: 20%;
     font-size: 2rem;
-    height: 5%;
+    height: 10%;
     padding: 20px;
     aspect-ratio: 1 / 1;
     display: flex;

@@ -7,6 +7,8 @@ import { hit as ApiHit, stand as ApiStand, StartGame as ApiStartGame } from './a
 import Card from './components/Card/Card';
 import GameTable from './components/GameTable/GameTable';
 import Deck from './components/Deck/Deck';
+import { GameStateContext, GameStateProvider } from './contexts/gameStateContext';
+import GameButtons from './components/GameButtons/GameButtons';
 
 
 
@@ -15,56 +17,18 @@ import Deck from './components/Deck/Deck';
 
 
 function App() {
-  const [gameState, setGameState] = useState<GameState | null>(null);
-  const [isGame, setIsGame] = useState(false);
-  const [endGame, setEndGame] = useState(false);
-
-
-  useEffect(() => {
-    if (gameState?.gameResult !== "") {
-      console.log("Игра закончена:", gameState);
-      setIsGame(false);
-    }
-  }, [gameState]);
-
-  function StartGame() {
-    ApiStartGame().then(state => {
-
-      setEndGame(false);
-      setGameState(state);
-      setIsGame(true);
-    })
-  }
-
-  function hit() {
-
-    ApiHit().then(state => {
-      setGameState(state);
-    })
-  }
-  function stand() {
-
-    ApiStand().then(state => {
-      setGameState(state);
-      setEndGame(true);
-      setIsGame(false);
-
-    })
-
-  }
+  
 
   return (
-    <div className='App'>
-      <GameTable gameState={gameState}></GameTable>
-      <div className='buttons'>
-        {!isGame && <button className="start_button" onClick={StartGame}>StartGame</button>}
-        {isGame && <button className="start_button" onClick={hit}>Hit</button>}
-        {isGame && <button className="start_button" onClick={stand}>Stand</button>}
+    <GameStateProvider>
+      <div className='App'>
+        <GameTable></GameTable>
+
+        <GameButtons></GameButtons>
+
+
       </div>
-
-
-
-    </div>
+    </GameStateProvider>
 
   )
 }
