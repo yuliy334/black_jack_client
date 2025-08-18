@@ -1,5 +1,6 @@
 import React from "react";
 import { useGameState } from "../../contexts/gameStateContext";
+import "./GameButtons.css"
 
 export default function GameButtons() {
   const { gameState, startGame, hit, stand } = useGameState();
