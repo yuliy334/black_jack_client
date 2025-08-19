@@ -1,0 +1,84 @@
+.end-game {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    font-size: 4rem;
+    padding: 20px;
+    border-radius: 20px;
+    text-align: center;
+}
+
+.win {
+    color: #00ff88;
+    font-size: 4rem;
+    font-weight: bold;
+    animation: popIn 1.5s ease-in-out, glowGreen 1.5s infinite alternate;
+}
+
+.loose {
+    color: #ff4040;
+    font-size: 4rem;
+    font-weight: bold;
+    animation: popIn 1.5s ease-in-out, glowRed 1.5s infinite alternate;
+}
+.push {
+    color: #ffcc00;
+    font-size: 4rem;
+    font-weight: bold;
+    animation: popIn 1.5s ease-in-out, glowYellow 1.5s infinite alternate;
+}
+
+
+
+
+
+@keyframes popIn {
+    0% {
+        transform: scale(0.0);
+        opacity: 0;
+    }
+    85% {
+        transform: scale(0);
+        opacity: 0;
+    }
+
+    90% {
+        transform: scale(1.2);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes glowGreen {
+    from {
+        text-shadow: 0 0 5px #00ff88, 0 0 15px #00ff88;
+    }
+
+    to {
+        text-shadow: 0 0 20px #00ffcc, 0 0 40px #00ffcc;
+    }
+}
+
+@keyframes glowRed {
+    from {
+        text-shadow: 0 0 5px #ff4040, 0 0 15px #ff4040;
+    }
+
+    to {
+        text-shadow: 0 0 20px #ff8080, 0 0 40px #ff8080;
+    }
+}
+@keyframes glowYellow {
+    from {
+        text-shadow: 0 0 5px #ffcc00, 0 0 15px #ffcc00;
+    }
+
+    to {
+        text-shadow: 0 0 20px #ffff66, 0 0 40px #ffff66;
+    }
+}

@@ -10,6 +10,8 @@ function DillerСards() {
 
     const [visibleCards, setVisibleCards] = useState<number[]>([]);
 
+
+
     useEffect(() => {
         if (!gameState?.dilerCards) return;
 
@@ -39,7 +41,7 @@ function DillerСards() {
             <div className='diller-points'>{!isGameOver? dillerPoints(gameState?.dilerCards.at(1)?.rank.toString()) :gameState?.dilerPoints.value}</div>
             <div className='diller-cards'>
                 {gameState?.dilerCards.map((item, index) => (
-                    <Card key={index} rank={String(item.rank)} suit={String(item.suit)} inversed={(index !== gameState.dilerCards.length - 1) && !isGameOver} className={visibleCards.includes(index) ? "card-animate" : "card-hidden-diller"} />
+                    <Card key={index} rank={String(item.rank)} suit={String(item.suit)} inversed={(index !== gameState.dilerCards.length - 1) && !isGameOver} className={visibleCards.includes(index) ? "card-animate" : "card-hidden-diller"} isFirstDiller = {index == (0)? "isFirstDiller":""} />
                 ))}
             </div>
         </>
