@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react"
 import "./Deck.css"
-import pick from '../../assets/cards/back.png';
 import Card from "../Card/Card";
 import type { GameState } from "../../types/types";
 
