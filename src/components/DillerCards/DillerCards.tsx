@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import type { GameState, Suit } from '../../types/types';
 import Card from '../Card/Card';
 import "./DillerCards.css"
 import { useGameState } from '../../contexts/gameStateContext';

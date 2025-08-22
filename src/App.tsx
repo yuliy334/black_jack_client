@@ -1,6 +1,6 @@
 import './App.css'
 import GameTable from './components/GameTable/GameTable';
-import { GameStateContext, GameStateProvider } from './contexts/gameStateContext';
+import {GameStateProvider } from './contexts/gameStateContext';
 import GameButtons from './components/GameButtons/GameButtons';
 import EndGame from './components/EndGame/EndGame';
 
@@ -17,7 +17,7 @@ function App() {
     <GameStateProvider>
       <div className='App'>
         <GameTable></GameTable>
-        <EndGame></EndGame>
+        <EndGame/>
         <GameButtons></GameButtons>
 
 

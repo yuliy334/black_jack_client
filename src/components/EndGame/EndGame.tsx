@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import { useGameState } from "../../contexts/gameStateContext";
 import "./EndGame.css"
 

@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useEffect, useState } from "react";
+import React, { createContext, useContext, useEffect, useState, type PropsWithChildren } from "react";
 import type { GameState } from "../types/types";
 
 interface GameStateContextType {
@@ -13,7 +13,7 @@ interface GameStateContextType {
 
 export const GameStateContext = createContext<GameStateContextType | null>(null);
 
-export function GameStateProvider({ children }: { children: React.ReactNode }) {
+export function GameStateProvider({ children }: PropsWithChildren) {
     const [gameState, setGameState] = useState<GameState | null>(() => {
         const saved = localStorage.getItem("gameState");
         return saved ? JSON.parse(saved) as GameState : null;
@@ -23,9 +23,8 @@ export function GameStateProvider({ children }: { children: React.ReactNode }) {
     useEffect(() => {
         if (gameState) {
             localStorage.setItem("gameState", JSON.stringify(gameState));
-        } else {
-            localStorage.removeItem("gameState");
         }
+
 
         if (gameState?.gameResult != "") {
             setIsGameOver(true);

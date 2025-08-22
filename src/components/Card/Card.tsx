@@ -1,4 +1,3 @@
-import React from "react"
 import "./Card.css"
 import dec from '../../assets/cards/back.png'
 type CardProps = {
